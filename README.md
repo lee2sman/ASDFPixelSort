@@ -1,3 +1,12 @@
+PixelSort
+
+a fork of Kim Asendorf's ASDFPixelSort
+
+Will hopefully keep working on this and fine-tuning it.
+Added a dialogue box for user to select the image on your computer you want to process.
+
+
+
 ASDFPixelSort
 =============
 
