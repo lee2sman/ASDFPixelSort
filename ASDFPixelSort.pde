@@ -1,4 +1,5 @@
 int mode = 1;
+boolean operate = false;
 
 //MODE:
 //0 -> black
@@ -7,7 +8,7 @@ int mode = 1;
 //b(16777216)
 
 PImage img;
-String imgFileName = "PIA15635";
+String imgFileName = "";
 String fileType = "png";
 
 int loops = 1;
@@ -22,13 +23,23 @@ int column = 0;
 boolean saved = false;
 
 void setup() {
-  img = loadImage(imgFileName+"."+fileType);
-  size(img.width, img.height);
-  image(img, 0, 0);
+  selectInput("Select a file to process:", "fileSelected");
 }
 
+void fileSelected(File selection) {
+  if (selection == null) {
+    println("Window was closed or the user hit cancel.");
+  } else {
+    imgFileName = selection.getAbsolutePath();
+    img = loadImage(selection.getAbsolutePath());
+    size(img.width, img.height);
+  image(img, 0, 0);
+    operate = true;
+  }
+}
 
 void draw() {
+  if (operate) {
   while(column < width-1) {
     img.loadPixels(); 
     sortColumn();
@@ -50,6 +61,7 @@ void draw() {
     println("DONE"+frameCount);
     System.exit(0);
   }
+}
 }
 
 
